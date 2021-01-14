@@ -31,7 +31,7 @@ import os
 import sys
 
 import numpy as np
-from six.moves import urllib
+import urllib
 import tensorflow as tf
 
 from datasets import dataset_utils

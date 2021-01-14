@@ -93,7 +93,6 @@ import sys
 import threading
 
 import numpy as np
-from six.moves import xrange  # pylint: disable=redefined-builtin
 import tensorflow as tf
 
 
@@ -370,7 +369,7 @@ def _process_image_files_batch(coder, thread_index, ranges, name, filenames,
   num_files_in_thread = ranges[thread_index][1] - ranges[thread_index][0]
 
   counter = 0
-  for s in xrange(num_shards_per_batch):
+  for s in range(num_shards_per_batch):
     # Generate a sharded version of the file name, e.g. 'train-00002-of-00010'
     shard = thread_index * num_shards_per_batch + s
     output_filename = '%s-%.5d-of-%.5d' % (name, shard, num_shards)
@@ -434,7 +433,7 @@ def _process_image_files(name, filenames, synsets, labels, humans,
   spacing = np.linspace(0, len(filenames), FLAGS.num_threads + 1).astype(np.int)
   ranges = []
   threads = []
-  for i in xrange(len(spacing) - 1):
+  for i in range(len(spacing) - 1):
     ranges.append([spacing[i], spacing[i+1]])
 
   # Launch a thread for each batch.
@@ -448,7 +447,7 @@ def _process_image_files(name, filenames, synsets, labels, humans,
   coder = ImageCoder()
 
   threads = []
-  for thread_index in xrange(len(ranges)):
+  for thread_index in range(len(ranges)):
     args = (coder, thread_index, ranges, name, filenames,
             synsets, labels, humans, bboxes, num_shards)
     t = threading.Thread(target=_process_image_files_batch, args=args)

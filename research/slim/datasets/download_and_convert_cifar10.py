@@ -31,8 +31,8 @@ import sys
 import tarfile
 
 import numpy as np
-from six.moves import cPickle
-from six.moves import urllib
+import pickle
+import urllib
 import tensorflow as tf
 
 from datasets import dataset_utils

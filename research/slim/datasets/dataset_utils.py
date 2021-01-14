@@ -22,7 +22,7 @@ import sys
 import tarfile
 import zipfile
 
-from six.moves import urllib
+import urllib
 import tensorflow as tf
 
 LABELS_FILENAME = 'labels.txt'
